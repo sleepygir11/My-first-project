@@ -1,22 +1,13 @@
 
-class Pasq:
-   def __init__(self, passwordy):
-      self.passwordy = passwordy
-   def check_password(self):
-      dadada = input("Password?")
-      if dadada == self.passwordy:
-         print("Yes! Welcome.")
-         True
-      else:
-         False
-b = input()
-paq = Pasq(b)
-a = 0
-while a != 2:
-   if paq.check_password() is True:
-      a=0
+def ask_password():
+   a = 0
+   password = input()
+   b = input()
+   if b != password:
+      while a != 2:
+         input("Password?")
+         a += 1
    else:
-      paq.check_password()
-      a+=1
-
-      
+      print("Great job!")
+ask_password()
+   
