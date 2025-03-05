@@ -48,7 +48,7 @@ while True:
    img_pos = img.get_rect()
    img_size = img.get_size()
    count = 0
-   pg.draw.circle(win,(0,0,0), circle_pos, circle_radius)
+
    if circle_visible:
       img_center = (img_pos[0] + img_size[0] // 2, img_pos[1] + img_size[1] // 2)
       distance = ((circle_pos[0] - img_center[0]) ** 2 + (circle_pos[1] - img_center[1]) ** 2) ** 0.5
@@ -64,7 +64,7 @@ while True:
       number = 1
    else:
       number = 0
-      
+
    text_surface = font.render(str(number), True, (255,255,255))
    text_rect = text_surface.get_rect(height = 0, width = 0)
 
