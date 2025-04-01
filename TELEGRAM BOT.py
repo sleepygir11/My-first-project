@@ -3,7 +3,7 @@ from telebot import types
 
 # importing types(buttons)
 
-bot = telebot.TeleBot('7869788406:AAF5w-bwvoy_wwV1mQADRQL-U-3PJBRq3sM')
+bot = telebot.TeleBot('')
 name = ''
 age = 0
 surname = ""
