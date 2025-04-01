@@ -15,6 +15,15 @@ if not os.path.exists(MEDIA_FOLDER):
 
 user_stats = defaultdict(lambda : {'repeat_count' : 0, 'last_message ': ''})
 
+@bot.message_handler(commands = ['music'])
+#Сюда кидайте ваши аудиофайлы
+def send_random_music(message):
+   tracks = [
+   ]
+   bot.send_audio(message.chat.id, random.choice(tracks),
+                  title = "Случайный трек", performer = "Медиа-бот")
+   
+
 @bot.message_handler(commands = ['start'])
 def start(message):
    bot.send_message(message.chat.id,"Я теперь продвинутый попугай! 😋 \n"
@@ -35,7 +44,7 @@ def send_random_pic(message):
    bot.send_photo(message.chat.id,random.choice(pics),
                   caption = "Вот тебе случайная картинка!")
    
-   
+
 @bot.message_handler(func = lambda message : True)
 def smart_parrot(message):
    user_id = message.from_user.id
