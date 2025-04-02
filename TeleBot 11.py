@@ -18,8 +18,7 @@ user_stats = defaultdict(lambda : {'repeat_count' : 0, 'last_message ': ''})
 @bot.message_handler(commands = ['music'])
 #Сюда кидайте ваши аудиофайлы
 def send_random_music(message):
-   tracks = [
-   ]
+   tracks = ['https://zvuk.com/track/136691248']
    bot.send_audio(message.chat.id, random.choice(tracks),
                   title = "Случайный трек", performer = "Медиа-бот")
    
@@ -40,10 +39,10 @@ def show_stats(message):
 
 @bot.message_handler(commands = ['pic'])
 def send_random_pic(message):
-   pics = []
+   pics = ['https://masterpiecer-images.s3.yandex.net/5fd531dca6427c7:upscaled']
    bot.send_photo(message.chat.id,random.choice(pics),
                   caption = "Вот тебе случайная картинка!")
-   
+
 
 @bot.message_handler(func = lambda message : True)
 def smart_parrot(message):
@@ -60,5 +59,15 @@ def smart_parrot(message):
       response = f'🦜Повторяю ({user_stats[user_id]['repeat_count']}) : {message.text}'
 
    bot.send_message(message.chat.id, response)
+
+@bot.message_handler(commands = ['file'])
+def file(message):
+   file_path = os.path.join(MEDIA_FOLDER, "test.txt")
+   if os.path.exists(file_path):
+      with open(file_path, "rb") as f:
+         bot.send_document(message.chat.id, f, caption= "Здесь текстовый файл!📑")
+   else:
+      bot.send_message(message.chat.id, "Файл не найден😳")
+
 
 bot.polling()
